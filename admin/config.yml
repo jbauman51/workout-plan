@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/img"
+public_folder: "/img"
+
+collections:
+  - name: "userdata"
+    label: "User Data"
+    folder: "data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - label: "JSON"
+        name: "body"
+        widget: "code"
+
