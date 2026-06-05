@@ -36,14 +36,7 @@
       </style>
    </head>
    <body>
-      <div class="login-container">
-         <h2>Login</h2>
-         <input type="text" id="username" placeholder="Username" required>
-         <input type="password" id="password" placeholder="Password" required>
-         <button onclick="login()">Login</button>
-         <p id="message"></p>
-      </div>
-      <div class="content-container" id="content" style="display: none;">
+      <div class="content-container" id="content">
          <h1>Push-Up / Ab-Roller Workout Plan</h1>
          <p>Track your progress by checking off completed sets and recording your reps.</p>
          <table>
@@ -292,36 +285,6 @@
          </table>
       </div>
       <script>
-
-        const validUsernameHash = '665eff92b4bd51f3e64ab4371e599e246ee1095cacff2889e5e0a0543b696f62'; 
-        const validPasswordHash = 'c90018cef5e015107b6c604e243b3ca421813739b56ed7bbb999ee0d3eabaa92'; 
-
-        async function hashString(str) {
-            const encoder = new TextEncoder();
-            const data = encoder.encode(str);
-            const hash = await crypto.subtle.digest('SHA-256', data);
-            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
-        }
-
-        async function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const message = document.getElementById('message');
-            const content = document.getElementById('content');
-
-            const usernameHash = await hashString(username);
-            const passwordHash = await hashString(password);
-
-            if (usernameHash === validUsernameHash && passwordHash === validPasswordHash) {
-                message.textContent = 'Login successful!';
-                message.style.color = 'green';
-                document.querySelector('.login-container').style.display = 'none';
-                content.style.display = 'block';
-            } else {
-                message.textContent = 'Invalid username or password.';
-                message.style.color = 'red';
-            }
-        }
 
          document.addEventListener('DOMContentLoaded', (event) => {
              const checkboxes = document.querySelectorAll('.checkbox');
